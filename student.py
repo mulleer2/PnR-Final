@@ -89,7 +89,15 @@ class Piggy(pigo.Pigo):
     def walk_it_by_yourself(self):
         for x in range(4):
             self.encR(3)
-            self.encL(3)
+            self.servo_shake()
+            self.encL(3
+
+
+    def servo_shake(self):
+        for x in range(2):
+            self.servo(74)
+            self.servo(114)
+
 
 
 
