@@ -79,7 +79,7 @@ class Piggy(pigo.Pigo):
     def now_kick(self):
         for x in range(2):
             self.encF(5)
-            self.servo(30)
+            self.servo(40)
             self.encR(20)
             self.encF(5)
             self.servo(150)
