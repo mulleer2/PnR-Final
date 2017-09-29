@@ -59,7 +59,7 @@ class Piggy(pigo.Pigo):
         ##### WRITE YOUR FIRST PROJECT HERE
         self.to_the_right()
         self.to_the_left()
-        # self.now_kick()
+        self.now_kick()
         # self.walk_it_by_yourself()
         # self.turn_left()
 
@@ -77,8 +77,11 @@ class Piggy(pigo.Pigo):
         self.encR(10)
 
     def now_kick(self):
-        for x in range(2):
-            pass
+        for x in range(4):
+            self. encF(5)
+
+
+
 
 
     def nav(self):
