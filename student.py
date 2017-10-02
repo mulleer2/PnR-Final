@@ -90,7 +90,7 @@ class Piggy(pigo.Pigo):
         for x in range(4):
             self.encR(3)
             self.servo_shake()
-            self.encL(3)
+            self.encL(6)
 
     def servo_shake(self):
         for x in range(2):
@@ -102,7 +102,7 @@ class Piggy(pigo.Pigo):
             self.servo(40)
             self.encR(10)
             self.servo(150)
-            self.encL(20)
+            self.encL(10)
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
