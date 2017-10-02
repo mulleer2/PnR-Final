@@ -4,6 +4,7 @@ import random
 
 # setup logs
 import logging
+
 LOG_LEVEL = logging.INFO
 LOG_FILE = "/home/pi/PnR-Final/log_robot.log"  # don't forget to make this file!
 LOG_FORMAT = "%(asctime)s %(levelname)s %(message)s"
@@ -21,9 +22,9 @@ class Piggy(pigo.Pigo):
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
         self.STOP_DIST = 30
         # YOU DECIDE: What left motor power helps straighten your fwd()?
-        self.LEFT_SPEED = 120
+        self.LEFT_SPEED = 180
         # YOU DECIDE: What left motor power helps straighten your fwd()?
-        self.RIGHT_SPEED = 110
+        self.RIGHT_SPEED = 170
         # This one isn't capitalized because it changes during runtime, the others don't
         self.turn_track = 0
         # Our scan list! The index will be the degree and it will store distance
@@ -61,8 +62,6 @@ class Piggy(pigo.Pigo):
         self.to_the_left()
         self.now_kick()
         self.walk_it_by_yourself()
-        # self.turn_left()
-
 
     def to_the_right(self):
         self.encR(10)
@@ -90,21 +89,12 @@ class Piggy(pigo.Pigo):
         for x in range(4):
             self.encR(3)
             self.servo_shake()
-            self.encL(3
-
+            self.encL(3)
 
     def servo_shake(self):
         for x in range(2):
             self.servo(74)
             self.servo(114)
-
-
-
-
-
-
-
-
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
@@ -126,6 +116,7 @@ def error():
 def quit_now():
     """shuts down app"""
     raise SystemExit
+
 
 ##################################################################
 ######## The app starts right here when we instantiate our GoPiggy
