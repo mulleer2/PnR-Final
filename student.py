@@ -63,6 +63,7 @@ class Piggy(pigo.Pigo):
         self.now_kick()
         self.walk_it_by_yourself()
         self.carlton()
+        self.wheelie()
 
     def to_the_right(self):
         self.encR(10)
@@ -104,6 +105,12 @@ class Piggy(pigo.Pigo):
             self.servo(150)
             self.encL(10)
 
+    def wheelie(self):
+        for x in range(2):
+            self.encF(5)
+            self.encB(5)
+            self.servo_shake()
+            
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
         logging.debug("Starting the nav method")
