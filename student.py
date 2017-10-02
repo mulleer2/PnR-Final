@@ -62,6 +62,7 @@ class Piggy(pigo.Pigo):
         self.to_the_left()
         self.now_kick()
         self.walk_it_by_yourself()
+        self.carlton()
 
     def to_the_right(self):
         self.encR(10)
@@ -95,6 +96,13 @@ class Piggy(pigo.Pigo):
         for x in range(2):
             self.servo(74)
             self.servo(114)
+
+    def carlton(self):
+        for x in range(4):
+            self.servo(40)
+            self.encR(10)
+            self.servo(150)
+            self.encL(20)
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
