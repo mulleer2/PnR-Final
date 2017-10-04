@@ -60,7 +60,7 @@ class Piggy(pigo.Pigo):
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
 
-        if(self.safety_check()):
+        if self.safety_check():
             self.to_the_right()
             self.to_the_left()
             self.now_kick()
@@ -76,8 +76,8 @@ class Piggy(pigo.Pigo):
         if False:
             self.encR(8)
             self.is_clear()
-        if True:
-            
+
+
 
 
 
