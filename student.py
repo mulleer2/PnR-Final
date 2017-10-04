@@ -150,7 +150,7 @@ class Piggy(pigo.Pigo):
         for x in range(8):
             self.encR(2)
             self.encB(3)
-            self.encL(2)
+            self.encL(4)
             self.encB(3)
 
 
