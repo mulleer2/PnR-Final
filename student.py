@@ -147,7 +147,7 @@ class Piggy(pigo.Pigo):
             self.encR(18)
 
     def moonwalk(self):
-        self.encB(17)
+        self.encB(21)
 
 
 
