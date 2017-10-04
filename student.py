@@ -136,6 +136,7 @@ class Piggy(pigo.Pigo):
             self.encL(8)
             time.sleep(.4)
             self.servo(150)
+            self.servo(94)
 
     def running_man(self):
         for x in range(2):
