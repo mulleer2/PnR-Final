@@ -72,10 +72,11 @@ class Piggy(pigo.Pigo):
 
         self.servo(self.MIDPOINT)
         if self.dist() < self.SAFE_STOP_DIST:
+            print("not going to dance")
             return False
-        if False:
-            self.encR(8)
-            self.is_clear()
+        if self.dist() > self.SAFE_STOP_DIST:
+            print("I don't dance I make money moves")
+            return True
 
 
 
