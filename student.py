@@ -67,6 +67,7 @@ class Piggy(pigo.Pigo):
             self.walk_it_by_yourself()
             self.carlton()
             self.whip()
+            self.running_man()
 
     def safety_check(self):
 
@@ -78,13 +79,6 @@ class Piggy(pigo.Pigo):
             self.encR(8)
         print("i dont dance i make money moves")
         return True
-
-
-
-
-
-
-
 
     def to_the_right(self):
         """subroutine of dance method"""
@@ -142,6 +136,12 @@ class Piggy(pigo.Pigo):
             self.encL(8)
             time.sleep(.4)
             self.servo(150)
+
+    def running_man(self):
+        for x in range(2):
+            self.encF(25)
+            self.encR(16)
+            self.encF(25)
 
 
 
