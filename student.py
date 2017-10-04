@@ -20,7 +20,8 @@ class Piggy(pigo.Pigo):
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
         self.MIDPOINT = 94
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
-        self.STOP_DIST = 30
+        self.SAFE_STOP_DIST = 30
+        self.HARD_STOP_DIST = 15
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.LEFT_SPEED = 120
         # YOU DECIDE: What left motor power helps straighten your fwd()?
@@ -58,26 +59,47 @@ class Piggy(pigo.Pigo):
         """executes a series of methods that add up to a compound dance"""
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
-        self.to_the_right()
-        self.to_the_left()
-        self.now_kick()
-        self.walk_it_by_yourself()
-        self.carlton()
-        self.whip()
+
+        if(self.safety_check()):
+            self.to_the_right()
+            self.to_the_left()
+            self.now_kick()
+            self.walk_it_by_yourself()
+            self.carlton()
+            self.whip()
+
+    def safety_check(self):
+
+        self.servo(self.MIDPOINT)
+        if self.dist() < self.SAFE_STOP_DIST:
+            return False
+        if False:
+            self.encR(8)
+            self.is_clear()
+        if True:
+            
+
+
+
+
+
 
     def to_the_right(self):
+        """subroutine of dance method"""
         self.encR(10)
         for x in range(4):
             self.encF(3)
         self.encL(10)
 
     def to_the_left(self):
+        """subroutine of dance method"""
         self.encL(10)
         for x in range(4):
             self.encF(3)
         self.encR(10)
 
     def now_kick(self):
+        """subroutine of dance method"""
         for x in range(2):
             self.encF(5)
             self.servo(40)
@@ -88,17 +110,20 @@ class Piggy(pigo.Pigo):
             self.servo(94)
 
     def walk_it_by_yourself(self):
+        """subroutine of dance method"""
         for x in range(4):
             self.encR(3)
             self.servo_shake()
             self.encL(6)
 
     def servo_shake(self):
+        """subroutine of walk_it_by_yourself method"""
         for x in range(2):
             self.servo(74)
             self.servo(114)
 
     def carlton(self):
+        """subroutine of dance method"""
         for x in range(4):
             self.servo(40)
             self.encR(10)
@@ -106,6 +131,7 @@ class Piggy(pigo.Pigo):
             self.encL(10)
 
     def whip(self):
+        """subroutine of dance method"""
         for x in range(2):
             self.servo(150)
             self.encR(8)
@@ -114,6 +140,15 @@ class Piggy(pigo.Pigo):
             self.encL(8)
             time.sleep(.4)
             self.servo(150)
+
+
+
+
+
+
+
+
+
 
 
 
