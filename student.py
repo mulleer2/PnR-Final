@@ -60,7 +60,7 @@ class Piggy(pigo.Pigo):
         print("\n---- LET'S DANCE ----\n")
         ##### WRITE YOUR FIRST PROJECT HERE
 
-        if self.safety_check(True):
+        if self.safety_check():
             self.to_the_right()
             self.to_the_left()
             self.now_kick()
@@ -71,12 +71,13 @@ class Piggy(pigo.Pigo):
     def safety_check(self):
 
         self.servo(self.MIDPOINT)
-        if self.dist() < self.SAFE_STOP_DIST:
-            print("not going to dance")
-            return False
-        if self.dist() > self.SAFE_STOP_DIST:
-            print("I don't dance I make money moves")
-            return True
+        for loop in range(4):
+            if not self.is_clear():
+                print("i aint dancin' vro")
+                return False
+            self.encR(8)
+        print("i dont dance i make money moves")
+        return True
 
 
 
