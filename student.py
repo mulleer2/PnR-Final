@@ -68,6 +68,7 @@ class Piggy(pigo.Pigo):
             self.carlton()
             self.whip()
             self.running_man()
+            self.moonwalk()
 
     def safety_check(self):
 
@@ -141,8 +142,13 @@ class Piggy(pigo.Pigo):
     def running_man(self):
         for x in range(2):
             self.encF(25)
-            self.encR(16)
+            self.encR(18)
             self.encF(25)
+            self.encR(18)
+
+    def moonwalk(self):
+        self.encB(17)
+
 
 
 
