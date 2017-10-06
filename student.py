@@ -69,6 +69,7 @@ class Piggy(pigo.Pigo):
             self.whip()
             self.running_man()
             self.moonwalk()
+            self.ballroom()
 
     def safety_check(self):
 
@@ -156,10 +157,11 @@ class Piggy(pigo.Pigo):
             self.encB(3)
 
     def ballroom(self):
+        """subroutine of dance method"""
         for x in range(3):
             self.spin()
             self.encF(8)
-        
+
 
     def spin(self):
         """subroutine of ballroom method"""
