@@ -70,7 +70,7 @@ class Piggy(pigo.Pigo):
             self.running_man()
             self.moonwalk()
             self.ballroom()
-            self.dab
+            self.dab()
 
     def safety_check(self):
 
