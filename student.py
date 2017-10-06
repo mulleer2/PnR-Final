@@ -140,6 +140,7 @@ class Piggy(pigo.Pigo):
             self.servo(94)
 
     def running_man(self):
+        """subroutine of dance method"""
         for x in range(2):
             self.encF(25)
             self.encR(18)
@@ -147,6 +148,7 @@ class Piggy(pigo.Pigo):
             self.encR(18)
 
     def moonwalk(self):
+        """subroutine of dance method"""
         for x in range(8):
             self.encR(2)
             self.encB(3)
