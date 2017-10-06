@@ -149,11 +149,24 @@ class Piggy(pigo.Pigo):
 
     def moonwalk(self):
         """subroutine of dance method"""
-        for x in range(8):
+        for x in range(4):
             self.encR(2)
             self.encB(3)
             self.encL(4)
             self.encB(3)
+
+    def ballroom(self):
+        for x in range(3):
+            self.spin()
+            self.encF(8)
+        
+
+    def spin(self):
+        """subroutine of ballroom method"""
+        for x in range(2):
+            self.encR(12)
+
+
 
 
 
