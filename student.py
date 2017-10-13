@@ -203,7 +203,7 @@ class Piggy(pigo.Pigo):
                 self.cruise()
 
             else:
-                self.encR(8)
+                self.encR(7)
 
 
 
