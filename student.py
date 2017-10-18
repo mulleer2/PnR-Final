@@ -44,7 +44,8 @@ class Piggy(pigo.Pigo):
                 "d": ("Dance", self.dance),
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
-                "q": ("Quit", quit_now)
+                "q": ("Quit", quit_now),
+                "o": ("Obstacle Count", self.obstacle_count)
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):
@@ -214,6 +215,22 @@ class Piggy(pigo.Pigo):
         while self.dist() > self.SAFE_STOP_DIST:
             time.sleep(.5)
         self.stop()
+
+    def obstacle_count(self):
+        """scans and counts the number of obstacles in sight"""
+        self.wide_scan()
+        found_something = False
+        counter = 0
+        for distance in self.scan:
+            if distance and distance < 200 and not found_something:
+                found_something = True
+                print("object # %d found, I think" % counter)
+            if distance and distance > 200 and found_something:
+                found_something = False
+                counter += 1
+        print("\n------I see %d objects------\n" % counter)
+
+
 
 
 
