@@ -218,17 +218,19 @@ class Piggy(pigo.Pigo):
 
     def obstacle_count(self):
         """scans and counts the number of obstacles in sight"""
-        self.wide_scan()
-        found_something = False
-        counter = 0
-        for distance in self.scan:
-            if distance and distance < 200 and not found_something:
-                found_something = True
-                print("object # %d found, I think" % counter)
-            if distance and distance > 200 and found_something:
-                found_something = False
-                counter += 1
-        print("\n------I see %d objects------\n" % counter)
+        for x in range(4):
+            self.wide_scan()
+            found_something = False
+            counter = 0
+            for distance in self.scan:
+                if distance and distance < 200 and not found_something:
+                    found_something = True
+                    print("object # %d found, I think" % counter)
+                if distance and distance > 200 and found_something:
+                    found_something = False
+                    counter += 1
+            print("\n------I see %d objects------\n" % counter)
+            self.encR(8)
 
 
 
