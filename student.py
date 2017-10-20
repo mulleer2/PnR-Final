@@ -45,8 +45,7 @@ class Piggy(pigo.Pigo):
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now),
-                "o": ("Obstacle Count", self.obstacle_count),
-                "p": ("Obstacle Scan 360", self.obstacle_count_full)
+                "o": ("Obstacle Count", self.obstacle_count)
                 }
         # loop and print the menu...
         for key in sorted(menu.keys()):
@@ -234,15 +233,6 @@ class Piggy(pigo.Pigo):
             print("\n------I see %d objects------\n" % counter)
             self.encR(6)
 
-    def obstacle_count_full(self):
-        """scans and counts the number of obstacles in a 360 around it"""
-
-        counter = 0
-        for x in range(4):
-            counter += self.obstacle_count()
-            self.encR(7)
-        print(counter)
-        print("\n-----I see %d total objects----\n")
 
 
 
