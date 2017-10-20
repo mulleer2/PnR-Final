@@ -223,14 +223,16 @@ class Piggy(pigo.Pigo):
         self.wide_scan()
         found_something = False
         counter = 0
-        for distance in self.scan:
-            if distance and distance < 60 and not found_something:
-                found_something = True
-                counter += 1
-                print("object # %d found, I think" % counter)
-            if distance and distance > 60 and found_something:
-                found_something = False
-        print("\n------I see %d objects------\n" % counter)
+        for x in range(4):
+            for distance in self.scan:
+                if distance and distance < 60 and not found_something:
+                    found_something = True
+                    counter += 1
+                    print("object # %d found, I think" % counter)
+                if distance and distance > 60 and found_something:
+                    found_something = False
+            print("\n------I see %d objects------\n" % counter)
+            self.encR(6)
 
     def obstacle_count_full(self):
         """scans and counts the number of obstacles in a 360 around it"""
