@@ -18,7 +18,7 @@ class Piggy(pigo.Pigo):
         """The robot's constructor: sets variables and runs menu loop"""
         print("I have been instantiated!")
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
-        self.MIDPOINT = 95
+        self.MIDPOINT = 90
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
         self.SAFE_STOP_DIST = 30
         self.HARD_STOP_DIST = 15
@@ -231,9 +231,9 @@ class Piggy(pigo.Pigo):
                 found_something = False
         print("\n------I see %d objects------\n" % counter)
 
-
-
     def obstacle_count_full(self):
+        """scans and counts the number of obstacles in a 360 around it"""
+
         counter = 0
         for x in range(4):
             counter += self.obstacle_count()
