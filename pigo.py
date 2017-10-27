@@ -17,8 +17,6 @@ class Pigo(object):
         self.LEFT_SPEED = 200
         self.turn_track = 0
         self.scan = [None] * 180
-        self.TIME_PER_DEGREE = 0.00466667
-        self.TURN_MODIFIER =
 
         if __name__ == "__main__":  # this makes sure the parent handler doesn't take over student's
             print('-----------------------')

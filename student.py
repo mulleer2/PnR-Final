@@ -32,6 +32,8 @@ class Piggy(pigo.Pigo):
         self.scan = [None] * 180
         self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
         # let's use an event-driven model, make a handler of sorts to listen for "events"
+        self.TIME_PER_DEGREE = 0.00466667
+        self.TURN_MODIFIER = 
         while True:
             self.stop()
             self.menu()
