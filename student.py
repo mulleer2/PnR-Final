@@ -202,11 +202,22 @@ class Piggy(pigo.Pigo):
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
+            """looks foward if lcear drive"""
             if self.is_clear():
                 self.cruise()
-
+            """turns right and checkis if clear"""
             else:
                 self.encR(7)
+                if self.is_clear():
+                    self.cruise()
+                """if right isnt clear look left"""
+                else:
+                    self.encL(14)
+                    if self.is_clear():
+                        self.cruise()
+                    
+
+
 
 
 
