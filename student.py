@@ -33,7 +33,7 @@ class Piggy(pigo.Pigo):
         self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
         # let's use an event-driven model, make a handler of sorts to listen for "events"
         self.TIME_PER_DEGREE = 0.00466667
-        self.TURN_MODIFIER = 0 
+        self.TURN_MODIFIER = 0
         while True:
             self.stop()
             self.menu()
@@ -233,7 +233,7 @@ class Piggy(pigo.Pigo):
                 if distance and distance > 60 and found_something:
                     found_something = False
             print("\n------I see %d objects------\n" % counter)
-            self.turnR(90)
+            self.encR(7)
 
 
     def turnR(self, deg):
