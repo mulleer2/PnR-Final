@@ -231,7 +231,30 @@ class Piggy(pigo.Pigo):
                 if distance and distance > 60 and found_something:
                     found_something = False
             print("\n------I see %d objects------\n" % counter)
-            self.encR(7)
+            self.turnR(90)
+
+
+    def turnR(self, deg):
+        """turns to a degree (right) instead of an encoder"""
+        self.turn_track += deg
+        print("The exit is " + str(self.turn_track) + "degrees away.")
+        self.set_speed(self.LEFT_SPEED * self.TURN_MODIFIER, self.RIGHT_SPEED * self.TURN_MODIFIER)
+        right_rot()
+        time.sleep(deg * self.TIME_PER_DEGREE)
+        self.stop()
+        self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
+
+    def turnL(self, deg):
+        """turns to a degree(left) instead of an encoder"""
+        self.turn_track -= deg
+        print("The exit is " + str(self.turn_track) + "degrees away.")
+        self.set_speed(self.LEFT_SPEED * self.TURN_MODIFIER, self.RIGHT_SPEED * self.TURN_MODIFIER)
+        left_rot()
+        time.sleep(deg * self.TIME_PER_DEGREE)
+        self.stop()
+        self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
+
+
 
 
 
