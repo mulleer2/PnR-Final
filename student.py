@@ -221,8 +221,7 @@ class Piggy(pigo.Pigo):
             """looks foward if lcear drive"""
             if self.is_clear():
                 self.cruise()
-            """turns right and checkis if clear"""
-            elif:
+            """turns right and check's if clear"""
                 self.encR(7)
                 if self.is_clear():
                     self.cruise()
