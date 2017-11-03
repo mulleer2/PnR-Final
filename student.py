@@ -222,7 +222,7 @@ class Piggy(pigo.Pigo):
             if self.is_clear():
                 self.cruise()
             """turns right and checkis if clear"""
-            else:
+            elif:
                 self.encR(7)
                 if self.is_clear():
                     self.cruise()
