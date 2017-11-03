@@ -187,7 +187,22 @@ class Piggy(pigo.Pigo):
 
 
 
+    def restore_heading(self):
+        """uses turn track to reorient original heading"""
+        print("RESTORING HEADING")
+        if self.turn_track > 0:
+            self.encL(abs(self.turn_track))
+        elif self.turn_track < 0:
+            self.encR(abs(self.turn_track))
 
+
+    def test_restore_heading(self):
+        """turnst robot around to test self.restore_heading"""
+        self.encR(5)
+        self.encL(14)
+        self.encL(4)
+        self.encR(3)
+        self.encL(9)
 
 
 
@@ -215,7 +230,7 @@ class Piggy(pigo.Pigo):
                     self.encL(14)
                     if self.is_clear():
                         self.cruise()
-                    
+
 
 
 
