@@ -210,6 +210,7 @@ class Piggy(pigo.Pigo):
 
 
 
+=
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
@@ -217,10 +218,39 @@ class Piggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("-------- [ Press CTRL + C to stop me ] --------\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
-        
+        """drives foward until sees object"""
+        while True:
+            if self.is_clear():
+                self.cruise()
+            """stops driving and finds the best path"""
+            else:
+                #stops the robot and looks for a new path
+                self.stop()
+                self.best_path()
 
 
+    def best_path(self):
+        """find the best possible route"""
+        safe_count = 0
+        path_lists = []
+        for x in range(self.MIDPOINT - 40, self.MIDPOINT + 40, 2):
+            #^^^ looks around looking for safe distances
+            self.servo(x)
+            time.sleep(.1)
+            self.scan[x] = self.dist()
+            if self.scan[x] > self.SAFE_STOP_DIST:
+                safe_count += 1
+            else:
+                #if 12 or more safe distances are found in a row it is a best path
+                safe_count = 0
+            if safe_count > 12:
+                print("\n -----Found a path----- \n" + str(
+                    (x + x - 16) / 2))
+                safe_count = 0
+                path_lists.append((x + x - 16) / 2)
+        print(str(path_lists[1:100]))
 
+ 
 
 
 
