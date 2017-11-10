@@ -212,7 +212,7 @@ class Piggy(pigo.Pigo):
 
 
 
-=
+
 
     def nav(self):
         """auto pilots and attempts to maintain original heading"""
