@@ -266,13 +266,31 @@ class Piggy(pigo.Pigo):
                 print("man this stuff is hard bruh im calling it quits")
             time.sleep(,2)
 
+    def turn_nav(self):
+        right_now = datetime.datetime.utcnow()
+        difference = (right_now - self.start_time).seconds
+        print("It took you %d seconds to run this" % difference)
+        while True:
+            if self.is_clear():  # no obstacles are detected by the robot
+                print("I am going to move forward!")
+                self.cruise()  # moves robot forward due to clear path
+            else:  # obstacle is detected
+                print("Ut oh! Something is blocking my path!")
+                self.encB(8)  # backs up
+                self.encR(8)  # turns right
+                if self.is_clear():  # clear path found to the right
+                    self.cruise()  # robot moves forward in clear direction
+                else:
+                    self.encL(8)  # turns left to find clear path if no clear path to the right
+                    if self.is_clear():  # path is clear
+                        self.cruise()  # robot moves forward in clear direction
+            self.restore_heading()  # reorients robot to original heading
 
 
- 
 
 
 
-    def cruise(self):
+def cruise(self):
         """Robots drives straight while path is clear"""
         self.fwd()
         while self.dist() > self.SAFE_STOP_DIST:
