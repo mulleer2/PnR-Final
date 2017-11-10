@@ -260,7 +260,7 @@ class Piggy(pigo.Pigo):
         while True:
             if  self.dist() > 100:
                 self.stop()
-                print("aye i think i see a path imma send it")
+                print("aye i think i see a path imma full send")
             elif datetime.datetime.utcnow() - start > datetime.timedelta(seconds=10):
                 self.stop()
                 print("man this stuff is hard bruh im calling it quits")
