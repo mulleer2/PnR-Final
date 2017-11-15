@@ -47,6 +47,7 @@ class Piggy(pigo.Pigo):
         # You may change the menu if you'd like to add an experimental method
         menu = {"n": ("Navigate forward", self.nav),
                 "d": ("Dance", self.dance),
+                "b": ("Enc Turn Nav", self.enc_turn_nav),
                 "c": ("Calibrate", self.calibrate),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now),
@@ -224,36 +225,8 @@ class Piggy(pigo.Pigo):
         right_now = datetime.datetime.utcnow()
         difference = (right_now - self.start_time).seconds
         print("It took you %d seconds to run this" % difference)
-        while True:
-            if self.is_clear():
-                self.cruise()
-            """stops driving and finds the best path"""
-            else:
-                #stops the robot and looks for a new path
-                self.stop()
-                self.best_path()
 
 
-    def best_path(self):
-        """find the best possible route"""
-        safe_count = 0
-        path_lists = []
-        for x in range(self.MIDPOINT - 40, self.MIDPOINT + 40, 2):
-            #^^^ looks around looking for safe distances
-            self.servo(x)
-            time.sleep(.1)
-            self.scan[x] = self.dist()
-            if self.scan[x] > self.SAFE_STOP_DIST:
-                safe_count += 1
-            else:
-                #if 12 or more safe distances are found in a row it is a best path
-                safe_count = 0
-            if safe_count > 12:
-                print("\n -----Found a path----- \n" + str(
-                    (x + x - 16) / 2))
-                safe_count = 0
-                path_lists.append((x + x - 16) / 2)
-        print(str(path_lists[1:100]))
 
     def smooth_turn(self):
         self.right_rot()
@@ -264,33 +237,42 @@ class Piggy(pigo.Pigo):
             elif datetime.datetime.utcnow() - start > datetime.timedelta(seconds=10):
                 self.stop()
                 print("man this stuff is hard bruh im calling it quits")
-            time.sleep(,2)
+            time.sleep(2)
 
-    def turn_nav(self):
-        right_now = datetime.datetime.utcnow()
-        difference = (right_now - self.start_time).seconds
-        print("It took you %d seconds to run this" % difference)
+
+    def enc_turn_nav(self):  # old nav method
+        """auto pilots and attempts to maintain original heading by turning right if it
+        detects and object, based on enc values"""
+        logging.debug("Starting the enc_turn_nav method")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        print("-------- [ Press CTRL + C to stop me ] --------\n")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
         while True:
-            if self.is_clear():  # no obstacles are detected by the robot
-                print("I am going to move forward!")
-                self.cruise()  # moves robot forward due to clear path
-            else:  # obstacle is detected
-                print("Ut oh! Something is blocking my path!")
-                self.encB(8)  # backs up
-                self.encR(8)  # turns right
-                if self.is_clear():  # clear path found to the right
-                    self.cruise()  # robot moves forward in clear direction
+            self.cruise()
+            if self.dist() < self.SAFE_STOP_DIST:  # detects an unsafe distance
+                self.stop()
+                while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right encR(1) until safe
+                    self.encR(1)
+                    time.sleep(.5)
+
+                if self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
+                    self.encF(36)
                 else:
-                    self.encL(8)  # turns left to find clear path if no clear path to the right
-                    if self.is_clear():  # path is clear
-                        self.cruise()  # robot moves forward in clear direction
-            self.restore_heading()  # reorients robot to original heading
+                    print('ERROR: STOPPING NAVIGATION')
+                    for x in range(3):
+                        self.stop()
+                    break
+
+                self.encL(abs(self.turn_track))
+
+                time.sleep(1)
 
 
 
 
 
-def cruise(self):
+
+    def cruise(self):
         """Robots drives straight while path is clear"""
         self.fwd()
         while self.dist() > self.SAFE_STOP_DIST:
