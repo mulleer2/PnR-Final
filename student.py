@@ -252,6 +252,7 @@ class Piggy(pigo.Pigo):
                 while self.dist() < self.SAFE_STOP_DIST:  # loops to turn right encR(1) until safe
                     self.encR(1)
                     time.sleep(.5)
+                self.encR(1)
 
                 if self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
                     self.encF(28)
