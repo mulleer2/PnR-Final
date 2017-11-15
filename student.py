@@ -170,7 +170,6 @@ class Piggy(pigo.Pigo):
             self.spin()
             self.encF(8)
 
-
     def spin(self):
         """subroutine of ballroom method"""
         for x in range(2):
