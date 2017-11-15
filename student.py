@@ -239,7 +239,6 @@ class Piggy(pigo.Pigo):
                 print("man this stuff is hard bruh im calling it quits")
             time.sleep(2)
 
-
     def enc_turn_nav(self):  # old nav method
         """auto pilots and attempts to maintain original heading by turning right if it
         detects and object, based on enc values"""
@@ -256,7 +255,7 @@ class Piggy(pigo.Pigo):
                     time.sleep(.5)
 
                 if self.dist() > self.SAFE_STOP_DIST:  # turns back to original center based on turntrack
-                    self.encF(36)
+                    self.encF(28)
                 else:
                     print('ERROR: STOPPING NAVIGATION')
                     for x in range(3):
