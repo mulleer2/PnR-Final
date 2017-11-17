@@ -279,7 +279,7 @@ class Piggy(pigo.Pigo):
                 if self.is_clear(): #checks for obstacles after turn
                      self.cruise()
                 else: #if left way is not clear turn right
-                    self.encR(16)
+                    self.encR(18)
                     if self.is_clear(): #checks if clear after turn
                         self.cruise()
             self.restore_heading()
