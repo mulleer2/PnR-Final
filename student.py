@@ -274,12 +274,12 @@ class Piggy(pigo.Pigo):
                 self.cruise() #robo goes fwd until sees obstacle
             else:
                 print("ahoy matey land ho!") #finds an obstacle
-                self.encB(6) #backs up so has move to turn
-                self.encL(8) #turns left
+                self.encB(5) #backs up so has move to turn
+                self.encL(7) #turns left
                 if self.is_clear(): #checks for obstacles after turn
                      self.cruise()
                 else: #if left way is not clear turn right
-                    self.encR(18)
+                    self.encR(15)
                     if self.is_clear(): #checks if clear after turn
                         self.cruise()
             self.restore_heading()
