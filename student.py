@@ -52,7 +52,8 @@ class Piggy(pigo.Pigo):
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit_now),
                 "o": ("Obstacle Count", self.obstacle_count),
-                "t": ("Restore Header Test", self.test_restore_heading)}
+                "t": ("Restore Header Test", self.test_restore_heading),
+                "m": ("Maze Navigation", self.maze_nav)}
         # loop and print the menu...
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])
@@ -282,7 +283,7 @@ class Piggy(pigo.Pigo):
                     if self.is_clear(): #checks if clear after turn
                         self.cruise()
             self.restore_heading()
-            
+
 
 
 
