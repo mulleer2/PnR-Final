@@ -266,6 +266,33 @@ class Piggy(pigo.Pigo):
 
                 time.sleep(1)
 
+    def maze_nav(self):
+        while True: #makes a loop
+            if self.is_clear(): #checks surroundings make sure it clear
+                print("here we go boys")
+                self.cruise() #robo goes fwd until sees obstacle
+            else:
+                print("ahoy matey land ho!") #finds an obstacle
+                self.encB(6) #backs up so has move to turn
+                self.encL(8) #turns left
+                if self.is_clear(): #checks for obstacles after turn
+                     self.cruise()
+                else: #if left way is not clear turn right
+                    self.encR(16)
+                    if self.is_clear(): #checks if clear after turn
+                        self.cruise()
+            self.restore_heading()
+            
+
+
+
+
+
+
+
+
+
+
 
 
 
