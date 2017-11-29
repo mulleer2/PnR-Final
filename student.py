@@ -276,6 +276,7 @@ class Piggy(pigo.Pigo):
                 print("ahoy matey land ho!") #finds an obstacle
                 self.encB(6) #backs up so has move to turn
                 self.encL(8) #turns left
+                self.cruise()
                 if self.dist() > self.SAFE_STOP_DIST: #checks for obstacles after turn
                      self.cruise()
                 else: #if left way is not clear turn right
