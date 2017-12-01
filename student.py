@@ -54,7 +54,8 @@ class Piggy(pigo.Pigo):
                 "o": ("Obstacle Count", self.obstacle_count),
                 "t": ("Restore Header Test", self.test_restore_heading),
                 "m": ("Maze Navigation", self.maze_nav),
-                "p": ("Maze Best Path", self.maze_path)}
+                "p": ("Maze Best Path", self.maze_path),
+                "r": ("Counter Nav", self.count_nav)}
         # loop and print the menu...
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])
@@ -300,6 +301,23 @@ class Piggy(pigo.Pigo):
                 if self.is_clear():
                     continue  #resets loop
                 self.encB(9)  #moves back to try and find path
+
+
+    count = 0
+    def count_nav(self):
+
+        while True:
+            if self.is_clear():
+                count = 0
+                self.cruise()
+            else:
+                self.two_way_turn(8)
+                count += 1
+                if count > 2:
+                    self.two_way_turn()
+
+
+
 
 
 
