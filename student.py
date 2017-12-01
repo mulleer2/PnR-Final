@@ -227,6 +227,14 @@ class Piggy(pigo.Pigo):
         right_now = datetime.datetime.utcnow()
         difference = (right_now - self.start_time).seconds
         print("It took you %d seconds to run this" % difference)
+        while True:
+            if self.is_clear():   #checsk if clear
+                self.servo(self.MIDPOINT) #moves head to midpoint
+                self.sruise() #moves fwd
+            else:
+                self.encB(4) #move bwd to create room
+                self.rl_turn() #looks for best path
+
 
 
 
@@ -329,7 +337,7 @@ class Piggy(pigo.Pigo):
                 time.sleep(.5)
             self.next_right = True
 
-    
+
 
 
 
