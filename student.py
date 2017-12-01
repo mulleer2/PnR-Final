@@ -287,6 +287,19 @@ class Piggy(pigo.Pigo):
 
 
 
+    def maze_path(self):
+        while True:   #creates while loop
+            if self.is_clear():   #checks around make sure it is clear
+                self.cruise()  #moves foward until sees something
+            else:
+                self.two_way_turn(7)  #looks both ways finding clear path
+                if self.is_clear():  #moves foward
+                    continue   #resets the while loop
+                self.two_way_turn(7) #looks both ways
+                if self.is_clear():
+                    continue  #resets loop
+                self.encB(9)  #moves back to try and find path
+
 
 
 
@@ -344,6 +357,20 @@ class Piggy(pigo.Pigo):
         time.sleep(deg * self.TIME_PER_DEGREE)
         self.stop()
         self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
+
+    self.switch_side  = True
+
+    def two_way_turn(self, enc):
+        """robots looks right if not clear looks left"""
+        if self.switch_side:
+            self.encR(enc)
+        else:
+            self.encL(enc)
+            self.switch_side = not self.switch_side
+
+
+
+
 
 
 
