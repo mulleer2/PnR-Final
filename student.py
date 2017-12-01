@@ -21,7 +21,7 @@ class Piggy(pigo.Pigo):
         #
         self.start_time = datetime.datetime.utcnow()
         # Our servo turns the sensor. What angle of the servo( ) method sets it straight?
-        self.MIDPOINT = 90
+        self.MIDPOINT = 80
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
         self.SAFE_STOP_DIST = 30
         self.HARD_STOP_DIST = 15
@@ -359,7 +359,7 @@ class Piggy(pigo.Pigo):
         self.stop()
         self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
-    
+
 
     def two_way_turn(self, enc):
         self.switch_side = True
