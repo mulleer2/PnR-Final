@@ -230,7 +230,7 @@ class Piggy(pigo.Pigo):
         while True:
             if self.is_clear():   #checsk if clear
                 self.servo(self.MIDPOINT) #moves head to midpoint
-                self.sruise() #moves fwd
+                self.cruise() #moves fwd
             else:
                 self.encB(4) #move bwd to create room
                 self.rl_turn() #looks for best path
