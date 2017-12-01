@@ -54,7 +54,7 @@ class Piggy(pigo.Pigo):
                 "o": ("Obstacle Count", self.obstacle_count),
                 "t": ("Restore Header Test", self.test_restore_heading),
                 "m": ("Maze Navigation", self.maze_nav),
-                "p": ("Maze Best Path"), self.maze_path)}
+                "p": ("Maze Best Path", self.maze_path)}
         # loop and print the menu...
         for key in sorted(menu.keys()):
             print(key + ":" + menu[key][0])
