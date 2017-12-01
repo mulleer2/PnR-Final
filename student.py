@@ -359,9 +359,10 @@ class Piggy(pigo.Pigo):
         self.stop()
         self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
-    self.switch_side  = True
+    
 
     def two_way_turn(self, enc):
+        self.switch_side = True
         """robots looks right if not clear looks left"""
         if self.switch_side:
             self.encR(enc)
