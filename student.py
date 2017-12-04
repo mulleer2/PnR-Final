@@ -345,10 +345,10 @@ class Piggy(pigo.Pigo):
             self.servo(self.MIDPOINT)
             if self.dist() < self.SAFE_STOP_DIST:
                 break
-            self.servo(self.MIDPOINT + 10):
+            self.servo(80 + 10):
             if self.dist() < self.SAFE_STOP_DIST:
                 break
-            self.servo(self.MIDPOINT - 10):
+            self.servo(80 - 10):
             if self.dist() < self.SAFE_STOP_DIST:
                 break
         self.stop()
