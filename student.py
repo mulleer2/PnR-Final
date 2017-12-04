@@ -310,8 +310,8 @@ class Piggy(pigo.Pigo):
                     continue  #resets loop
                 self.encB(9)  #moves back to try and find path
 
-
     count = 0
+
     def count_nav(self):
 
         while True:
@@ -326,34 +326,14 @@ class Piggy(pigo.Pigo):
 
     def rl_turn(self):
         """Method that turns right and left until open path"""
-        if self.next_right:  # Turn right first
+        if self.next_right:
             while self.dist() < self.SAFE_STOP_DIST:
-                self.encR(3)
-                time.sleep(.5)
+                self.encR(2)
+                time.sleep(.1)
             self.next_right = False
-        else:  # If object is in the way to the right robots turns left
-            while self.dist() < self.SAFE_STOP_DIST:
-                self.encL(3)
-                time.sleep(.5)
-            self.next_right = True
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            time.sleep(.1)
+            self.encR(3)
+            time.sleep(.1)
 
     def cruise(self):
         """Robots drives straight while path is clear"""
@@ -379,7 +359,6 @@ class Piggy(pigo.Pigo):
             print("\n------I see %d objects------\n" % counter)
             self.encR(7)
 
-
     def turnR(self, deg):
         """turns to a degree (right) instead of an encoder"""
         self.turn_track += deg
@@ -399,8 +378,6 @@ class Piggy(pigo.Pigo):
         time.sleep(deg * self.TIME_PER_DEGREE)
         self.stop()
         self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
-
-
 
     def two_way_turn(self, enc):
         self.switch_side = True
