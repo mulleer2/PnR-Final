@@ -341,8 +341,16 @@ class Piggy(pigo.Pigo):
     def cruise(self):
         """Robots drives straight while path is clear"""
         self.fwd()
-        while self.dist() > self.SAFE_STOP_DIST:
-            time.sleep(.5)
+        while True:
+            self.servo(self.MIDPOINT)
+            if self.dist() < self.SAFE_STOP_DIST:
+                break
+            self.servo(self.MIDPOINT + 10):
+            if self.dist() < self.SAFE_STOP_DIST:
+                break
+            self.servo(self.MIDPOINT - 10):
+            if self.dist() < self.SAFE_STOP_DIST:
+                break
         self.stop()
 
     def obstacle_count(self):
