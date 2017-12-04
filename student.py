@@ -342,13 +342,13 @@ class Piggy(pigo.Pigo):
         """Robots drives straight while path is clear"""
         self.fwd()
         while True:
-            self.servo(self.MIDPOINT)
+            self.servo(80)
             if self.dist() < self.SAFE_STOP_DIST:
                 break
-            self.servo(self.MIDPOINT):
+            self.servo(80):
             if self.dist() < self.SAFE_STOP_DIST:
                 break
-            self.servo(self.MIDPOINT):
+            self.servo(80):
             if self.dist() < self.SAFE_STOP_DIST:
                 break
         self.stop()
