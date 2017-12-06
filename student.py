@@ -235,7 +235,7 @@ class Piggy(pigo.Pigo):
                 self.encB(3)
                 self.rl_turn()
 
-      def smooth_turn(self):
+    def smooth_turn(self):
         self.right_rot()
         while True:
             if  self.dist() > 100:
