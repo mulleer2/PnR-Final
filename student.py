@@ -235,13 +235,7 @@ class Piggy(pigo.Pigo):
                 self.encB(3)
                 self.rl_turn()
 
-
-
-
-
-
-
-    def smooth_turn(self):
+      def smooth_turn(self):
         self.right_rot()
         while True:
             if  self.dist() > 100:
@@ -297,23 +291,16 @@ class Piggy(pigo.Pigo):
                     if self.dist() > self.SAFE_STOP_DIST: #checks if clear after turn
                         self.cruise()
 
-
-
-
     def maze_path(self):
         while True:   #creates while loop
             if self.is_clear():   #checks around make sure it is clear
                 self.cruise()  #moves foward until sees something
             else:
                 self.two_way_turn(7)  #looks both ways finding clear path
-                if self.is_clear():  #moves foward
-                    continue   #resets the while loop
-                self.two_way_turn(7) #looks both ways
-                if self.is_clear():
-                    continue  #resets loop
-                self.encB(9)  #moves back to try and find path
-
-    count = 0
+                if  not self.is_clear():  #moves foward
+                    self.two_way_turn(7) #looks both ways
+                if not self.is_clear():
+                    self.encB(9)  #moves back to try and find path
 
     def count_nav(self):
 
@@ -397,22 +384,7 @@ class Piggy(pigo.Pigo):
             self.encR(enc)
         else:
             self.encL(enc)
-            self.switch_side = not self.switch_side
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            self.switch_side = not self.switch_self
 
 ####################################################
 ############### STATIC FUNCTIONS
