@@ -284,11 +284,11 @@ class Piggy(pigo.Pigo):
                 self.encB(6) #backs up so has move to turn
                 self.encL(8) #turns left
                 self.cruise()
-                if self.dist() > self.SAFE_STOP_DIST: #checks for obstacles after turn
+                if self.is_clear(): #checks for obstacles after turn
                      self.cruise()
                 else: #if left way is not clear turn right
                     self.encR(16)
-                    if self.dist() > self.SAFE_STOP_DIST: #checks if clear after turn
+                    if self.is_clear():
                         self.cruise()
 
     def maze_path(self):
