@@ -338,6 +338,7 @@ class Piggy(pigo.Pigo):
             self.servo(70)
             if self.dist() < self.SAFE_STOP_DIST:
                 break
+            self.fwd()
         self.stop()
 
     def obstacle_count(self):
